@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="style.css"></link>
+</head>
+<!-- => Create 3 page : start, quiz, score
+1. startPage:- basic layout when user click on Start Quiz button start and last page hide and show mid page.
+2. quizPage:- basic layout
+            - timer start (02:00)
+            - Upadte Score
+            - End Quiz button -> startPage & midPage hide and show last page with score
+            - Skip button: doesn't count it score and move to next question
+            - Next button: add it score on currentScore and move to next question
+            - if(it last question(10)) then after click on Submit button: add it score and show last page
+3. scorePage:- basic layout
+            - show total score
+            - if(score >= 20) then show pass message else show fail message 
+-->
+
+<body>
+    <div class="main">
+        <div id="startPage">
+            <div class="title">G.K. Quiz</div>
+            <div class="quizInfo">
+                <div class="userName">
+                    <p>Please enter your name</p>
+                    <input type="text" placeholder="Enter you name">
+                </div>
+                <div class="aboutQuiz">
+                    <p>About Quiz:<p>
+                    <div class="quizInstructions">
+                        <ul>
+                            <li>There are total 10 Questions.</li>
+                            <li>You have total 2 mins.</li>
+                            <li>Each question is of 4 marks.</li>
+                            <li>There is a negative marking (each wrong attempt will deduct 1 mark).</li>
+                            <li>Minimum passing marks is 20.</li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="quizStartBtn">Start Quiz</button>
+            </div>
+        </div>
+        <div id="quizPage"></div>
+        <div id="scorePage"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

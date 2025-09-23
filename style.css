@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.body {
+    background-color: #F4F6F7;
+}
+.main {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    background-color: #F0F8FF;
+}
+
+#startPage {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: #2C3E50;
+    color: #fff;
+}
+
+.quizInfo {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.userName {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+    border-radius: 15px;
+}
+.userName p {
+    font-size: 20px;
+}
+.userName input {
+    background-color: #FFFFFF;
+    border: 0;
+    border-color: #BDC3C7;
+}
+
+.aboutQuiz {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    background-color: #FFF8E7;
+    border-radius: 15px;
+}
+.aboutQuiz p {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+}
+.quizInstructions {
+    width: 100%;
+    padding-left: 15px;
+    color: #2C3E50;
+}
+
+.quizStartBtn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    border: 0px;
+}
