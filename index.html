@@ -27,7 +27,7 @@
             <div class="quizInfo">
                 <div class="userName">
                     <p>Please enter your name</p>
-                    <input type="text" placeholder="Enter you name">
+                    <input id="nameInput" type="text" placeholder="Enter you name">
                 </div>
                 <div class="aboutQuiz">
                     <p>About Quiz:<p>
@@ -41,13 +41,29 @@
                         </ul>
                     </div>
                 </div>
-                <button class="quizStartBtn">Start Quiz</button>
+                <button id="quizStartBtn">Start Quiz</button>
             </div>
         </div>
-        <div id="quizPage"></div>
-        <div id="scorePage"></div>
+        <div id="quizPage">
+            <div class="header">
+                <button id="quizEndBtn">End Quiz</button>
+            </div>
+            <div id="quizQuestion"></div>
+            <div class="footer">
+                <button id="skipBtn">Skip</button>
+                <button id="nextQuesBtn">Next</button>
+            </div>
+        </div>
+        <div id="scorePage">
+            <div class="title">G.K. Quiz</div>
+            <div class="result">
+                <p class="totalScore">Your total Score is:</p>
+                <p class="passMessage">Congratulations you passed this Quiz!!</p>
+                <p class="failMessage">You failed this Quiz, Better luck next time!!</p>
+            </div>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
