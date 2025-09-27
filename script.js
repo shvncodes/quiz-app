@@ -61,8 +61,8 @@ function timer() {
     startTimer();
 };
 
-quizStartBtnNode.addEventListener("click", () => {
-    if (!userNameNode.value.trim()) {
+function startQuiz() {
+    if(!userNameNode.value.trim()) {
         alert('Please enter your name to start the quiz.');
         return;
     }
@@ -71,6 +71,12 @@ quizStartBtnNode.addEventListener("click", () => {
 
     timer();
     insertQuestionInDOM(questions[currentQuestionIndx]);
+}
+
+quizStartBtnNode.addEventListener("click", startQuiz);
+
+userNameNode.addEventListener("keydown", (e)=> {
+    if(e.key === "Enter") startQuiz();
 })
 
 function insertQuestionInDOM(question) {
