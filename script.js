@@ -1,26 +1,26 @@
 import { questions } from "./questions.js";
-const startPage = document.querySelector("#startPage");
-const userName = document.querySelector("#nameInput");
-const quizStartBtn = document.querySelector("#quizStartBtn");
-const quizPage = document.querySelector("#quizPage");
-const ques = document.querySelector("#question");
+const startPageNode = document.querySelector("#startPage");
+const userNameNode = document.querySelector("#nameInput");
+const quizStartBtnNode = document.querySelector("#quizStartBtn");
+const quizPageNode = document.querySelector("#quizPage");
+const questionNameNode = document.querySelector("#question");
 const optionsNode = document.querySelector("#options");
-const skipBtn = document.querySelector("#skipBtn");
-const nextQuesBtn = document.querySelector("#nextQuesBtn");
-const quizEndBtn = document.querySelector("#quizEndBtn");
-const scorePage = document.querySelector("#scorePage");
-const result = document.querySelector("#totalScore");
+const skipBtnNode = document.querySelector("#skipBtn");
+const nextQuesBtnNode = document.querySelector("#nextQuesBtn");
+const quizEndBtnNode = document.querySelector("#quizEndBtn");
+const scorePageNode = document.querySelector("#scorePage");
+const userScoreNode = document.querySelector("#totalScore");
 const resultMsgNode = document.querySelector("#resultMsg");
 
 let currentScore = 0;
 let currentQuestionIndx = 0;
 
 function showResult() {
-    quizPage.style.display = 'none';
-    scorePage.style.display = 'flex';
+    quizPageNode.style.display = 'none';
+    scorePageNode.style.display = 'flex';
 
     const totalScore = 4*(questions.length);
-    result.textContent = `Your total score is: ${currentScore} out of ${totalScore}`;
+    userScoreNode.textContent = `Your total score is: ${currentScore} out of ${totalScore}`;
     if(currentScore >= 20) {
        resultMsgNode.textContent = "Congratulations you passed this Quiz!!";
        resultMsgNode.style.color = 'green';
@@ -61,20 +61,20 @@ function timer() {
     startTimer();
 };
 
-quizStartBtn.addEventListener("click", () => {
-    if (!userName.value.trim()) {
+quizStartBtnNode.addEventListener("click", () => {
+    if (!userNameNode.value.trim()) {
         alert('Please enter your name to start the quiz.');
         return;
     }
-    startPage.style.display = 'none';
-    quizPage.style.display = 'flex';
+    startPageNode.style.display = 'none';
+    quizPageNode.style.display = 'flex';
 
     timer();
     insertQuestionInDOM(questions[currentQuestionIndx]);
 })
 
 function insertQuestionInDOM(question) {
-    ques.textContent = `Q.${currentQuestionIndx+1}: `+question.name;
+    questionNameNode.textContent = `Q.${currentQuestionIndx+1}: `+question.name;
     let optionsHTML = "";
     question.options.forEach((option, i) => {
        optionsHTML += `<div id="option${i}">
@@ -85,7 +85,7 @@ function insertQuestionInDOM(question) {
     optionsNode.innerHTML = optionsHTML;
 }
 
-skipBtn.addEventListener("click", function() {
+skipBtnNode.addEventListener("click", function() {
     if(currentQuestionIndx === questions.length - 1) {
         showResult();
         return;
@@ -94,7 +94,7 @@ skipBtn.addEventListener("click", function() {
     insertQuestionInDOM(questions[currentQuestionIndx]);
 })
 
-nextQuesBtn.addEventListener("click", function() {
+nextQuesBtnNode.addEventListener("click", function() {
     if(currentQuestionIndx === questions.length - 1) {
         showResult();
         return;
@@ -111,5 +111,4 @@ nextQuesBtn.addEventListener("click", function() {
     insertQuestionInDOM(questions[currentQuestionIndx]);
 })
 
-
-quizEndBtn.addEventListener("click", showResult);
+quizEndBtnNode.addEventListener("click", showResult);
