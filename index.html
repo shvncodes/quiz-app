@@ -6,19 +6,6 @@
     <title>Quiz App</title>
     <link rel="stylesheet" href="style.css"></link>
 </head>
-<!-- => Create 3 page : start, quiz, score
-1. startPage:- basic layout when user click on Start Quiz button start and last page hide and show mid page.
-2. quizPage:- basic layout
-            - timer start (02:00)
-            - Upadte Score
-            - End Quiz button -> startPage & midPage hide and show last page with score
-            - Skip button: doesn't count it score and move to next question
-            - Next button: add it score on currentScore and move to next question
-            - if(it last question(10)) then after click on Submit button: add it score and show last page
-3. scorePage:- basic layout
-            - show total score
-            - if(score >= 20) then show pass message else show fail message 
--->
 
 <body>
     <div class="main">
@@ -33,7 +20,7 @@
                     <p>About Quiz:<p>
                     <div class="quizInstructions">
                         <ul>
-                            <li>There are total 10 Questions.</li>
+                            <li>There are total 20 Questions.</li>
                             <li>You have total 2 mins.</li>
                             <li>Each question is of 4 marks.</li>
                             <li>There is a negative marking (each wrong attempt will deduct 1 mark).</li>
@@ -46,9 +33,13 @@
         </div>
         <div id="quizPage">
             <div class="header">
+                <time id="timer" aria-live="polite">Timer: 02:00</time>
                 <button id="quizEndBtn">End Quiz</button>
             </div>
-            <div id="quizQuestion"></div>
+            <div id="quizQuestion">
+                <p id="question"></p>
+                <div id="options"></div>
+            </div>
             <div class="footer">
                 <button id="skipBtn">Skip</button>
                 <button id="nextQuesBtn">Next</button>
@@ -57,9 +48,8 @@
         <div id="scorePage">
             <div class="title">G.K. Quiz</div>
             <div class="result">
-                <p class="totalScore">Your total Score is:</p>
-                <p class="passMessage">Congratulations you passed this Quiz!!</p>
-                <p class="failMessage">You failed this Quiz, Better luck next time!!</p>
+                <p id="totalScore"></p>
+                <p id="resultMsg"></p>
             </div>
         </div>
     </div>

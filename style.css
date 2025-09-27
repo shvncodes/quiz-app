@@ -17,11 +17,11 @@ body {
     background-color: #F0F8FF;
 }
 
-/* Start Page- */
+/* Start Page */
 #startPage{
     width: 100%;
     padding: 20px;
-    display: none;
+    display: flex;
     justify-content: center;
     flex-direction: column;
     gap: 10px;
@@ -105,14 +105,18 @@ body {
     background-color: #298a53;
 }
 
-/* Quiz Page- */
+/* Quiz Page */
 #quizPage{
     width: 100%;
     padding: 20px;
-    display: flex;
+    display: none;
     justify-content: center;
     flex-direction: column;
     gap: 15px;
+}
+
+#timer {
+    font-size: 20px;
 }
 
 #quizQuestion {
@@ -122,10 +126,31 @@ body {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    gap: 15px;
+    gap: 10px;
     border: 0;
     border-radius: 12px;
     background-color: #FFF8E7;
+}
+
+#question {
+    width: 100%;
+    padding: 5px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+}
+
+#options {
+    width: 100%;
+    padding: 5px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+    gap: 8px;
 }
 
 .header, .footer {
@@ -183,13 +208,4 @@ body {
     text-align: center;
     gap: 15px;
     font-size: 20px;
-}
-
-.passMessage {
-    color: green;
-    display: none;
-}
-.failMessage {
-    color: red;
-    display: none;
 }
