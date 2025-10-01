@@ -5,6 +5,7 @@ const quizStartBtnNode = document.querySelector("#quizStartBtn");
 const quizPageNode = document.querySelector("#quizPage");
 const questionNameNode = document.querySelector("#question");
 const optionsNode = document.querySelector("#options");
+const backBtnNode = document.querySelector("#backBtn");
 const skipBtnNode = document.querySelector("#skipBtn");
 const nextQuesBtnNode = document.querySelector("#nextQuesBtn");
 const quizEndBtnNode = document.querySelector("#quizEndBtn");
@@ -12,16 +13,23 @@ const scorePageNode = document.querySelector("#scorePage");
 const userScoreNode = document.querySelector("#totalScore");
 const resultMsgNode = document.querySelector("#resultMsg");
 
-let currentScore = 0;
 let currentQuestionIndx = 0;
+
+const userSelections = [];
 
 function showResult() {
     quizPageNode.style.display = 'none';
     scorePageNode.style.display = 'flex';
 
+    let score = 0;
+    for(let i = 0; i < questions.length; i++) {
+        if(userSelections[i] === questions[i].rightOption) score += 4;
+        else if(userSelections[i] != null) score -= 1;
+    }
+
     const totalScore = 4*(questions.length);
-    userScoreNode.textContent = `Your total score is: ${currentScore} out of ${totalScore}`;
-    if(currentScore >= 20) {
+    userScoreNode.textContent = `Your total score is: ${score} out of ${totalScore}`;
+    if(score >= 20) {
        resultMsgNode.textContent = "Congratulations you passed this Quiz!!";
        resultMsgNode.style.color = 'green';
     } else {
@@ -80,22 +88,33 @@ userNameNode.addEventListener("keydown", (e)=> {
 })
 
 function insertQuestionInDOM(question) {
-    questionNameNode.textContent = `Q.${currentQuestionIndx+1}: `+question.name;
+    questionNameNode.textContent = `Q.${currentQuestionIndx+1}: `+ question.name;
     let optionsHTML = "";
     question.options.forEach((option, i) => {
-       optionsHTML += `<div id="option${i}">
-            <input id="opt${i}" name="option" type="radio" value='${option}'>
-            <label for="opt${i}">${option}</label>
-        </div>\n`
-    })  
+        const isSelected = userSelections[currentQuestionIndx] === option;
+        optionsHTML += `<div id="option${i}">
+                <input id="opt${i}" name="option" type="radio" value='${option}' ${isSelected ? 'checked' : ''}>
+                <label for="opt${i}">${option}</label>
+            </div>\n`
+    })
     optionsNode.innerHTML = optionsHTML;
 }
+
+backBtnNode.addEventListener("click", function() {
+    if(currentQuestionIndx === 0) return;
+
+    currentQuestionIndx--;
+    insertQuestionInDOM(questions[currentQuestionIndx]);
+})
 
 skipBtnNode.addEventListener("click", function() {
     if(currentQuestionIndx === questions.length - 1) {
         showResult();
         return;
     }
+
+    userSelections[currentQuestionIndx] = null;
+
     currentQuestionIndx++;
     insertQuestionInDOM(questions[currentQuestionIndx]);
 })
@@ -109,9 +128,9 @@ nextQuesBtnNode.addEventListener("click", function() {
     if(!selectedInput) {
         alert("Select an option");
         return;
-    } 
-    if(selectedInput.value === questions[currentQuestionIndx].rightOption) currentScore += 4;
-    else currentScore -= 1;
+    }
+
+    userSelections[currentQuestionIndx] = selectedInput.value;
 
     currentQuestionIndx++;
     insertQuestionInDOM(questions[currentQuestionIndx]);

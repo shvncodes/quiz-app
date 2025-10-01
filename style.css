@@ -160,7 +160,7 @@ body {
     justify-content: space-between;
 }
 
-#quizEndBtn , #skipBtn, #nextQuesBtn {
+#quizEndBtn , #skipBtn, #nextQuesBtn, #backBtn {
     padding: 12px 20px;
     font-size: 18px;
     border-radius: 20px;
@@ -176,11 +176,18 @@ body {
     background-color: rgb(222, 35, 35);
 }
 
-#skipBtn {
+#backBtn {
     background-color: gray;
 }
-#skipBtn:hover {
+#backBtn:hover {
     background-color: rgb(105, 102, 102);
+}
+
+#skipBtn {
+    background-color: rgb(123, 190, 216);
+}
+#skipBtn:hover {
+    background-color: rgb(93, 159, 185);
 }
 
 #nextQuesBtn {
