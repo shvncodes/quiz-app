@@ -12,10 +12,12 @@ const quizEndBtnNode = document.querySelector("#quizEndBtn");
 const scorePageNode = document.querySelector("#scorePage");
 const userScoreNode = document.querySelector("#totalScore");
 const resultMsgNode = document.querySelector("#resultMsg");
+const LOCAL_STORAGE_KEY = "leaderboardData";
 
 let currentQuestionIndx = 0;
 
 const userSelections = [];
+const leaderboardData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) ?? [];
 
 function showResult() {
     quizPageNode.style.display = 'none';
@@ -36,6 +38,15 @@ function showResult() {
         resultMsgNode.textContent = "You failed this Quiz, Better luck next time!!";
         resultMsgNode.style.color = 'red';   
     }
+
+    const data = {
+        id: Date.now() + Math.random().toString(16).slice(2),
+        name: userNameNode.value,
+        score: score,
+        date: new Date().toDateString(),
+    }
+    leaderboardData.push(data);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(leaderboardData));
 }
 
 function timer() {
